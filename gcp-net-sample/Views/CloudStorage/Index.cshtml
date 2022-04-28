@@ -1,0 +1,20 @@
+﻿@model gcp_net_sample.ViewModels.CloudStorageViewModel
+    
+<H1>Cloud Storage Sample</H1>
+@if (Model.MissingBucketName)
+{
+    <p>Set the configuration variable CloudStorageOptions:BucketName to your Cloud Storage bucket name.</p>
+    <p>See the README.md in the project directory for more information.</p>
+}
+else
+{
+    if (Model.SavedNewContent)
+    {
+        <p>The new content was saved.</p>
+    }
+    <form asp-controller="CloudStorage" asp-action="Index" id="TextForm">
+        <label for="content">Enter some file content:</label><br />
+        <textarea cols="40" rows="10" id="content" name="content" asp-for="Content"></textarea><br />
+        <button id="Submit" type="submit">Save</button>
+    </form>
+}
